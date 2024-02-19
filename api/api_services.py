@@ -2,6 +2,7 @@ from database.database import getAllEvents, getEventsByOwner, startConnection, e
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 import uvicorn
+import os
 
 
 origins = [
@@ -9,6 +10,10 @@ origins = [
     "https://localhost.tiangolo.com",
     "http://localhost",
     "http://localhost:8080",
+    os.environ.get("LOCAL_IP"),
+    os.environ.get("VM_IP"),
+    os.environ.get("FRONTEND_IP"),
+    os.environ.get("COOKIEBOT_IP"),
 ]
 
 app = FastAPI()
